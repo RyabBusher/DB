@@ -32,16 +32,16 @@
             this.buttonEdit = new System.Windows.Forms.Button();
             this.buttonDel = new System.Windows.Forms.Button();
             this.listViewOrg = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.textBoxAdress = new System.Windows.Forms.TextBox();
             this.textBoxPhone = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // buttonAdd
@@ -93,6 +93,22 @@
             this.listViewOrg.View = System.Windows.Forms.View.Details;
             this.listViewOrg.SelectedIndexChanged += new System.EventHandler(this.listViewOrg_SelectedIndexChanged);
             // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "ID";
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Наименование";
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Адрес";
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Телефон";
+            // 
             // textBoxName
             // 
             this.textBoxName.Location = new System.Drawing.Point(12, 94);
@@ -141,22 +157,6 @@
             this.label3.TabIndex = 9;
             this.label3.Text = "Телефон";
             // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "ID";
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Наименование";
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Адрес";
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "Телефон";
-            // 
             // FormOrg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -173,7 +173,7 @@
             this.Controls.Add(this.buttonEdit);
             this.Controls.Add(this.buttonAdd);
             this.Name = "FormOrg";
-            this.Text = "FormOrg";
+            this.Text = "Организации";
             this.ResumeLayout(false);
             this.PerformLayout();
 

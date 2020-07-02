@@ -72,7 +72,7 @@
             this.Controls.Add(this.buttonGaz);
             this.Controls.Add(this.buttonOrg);
             this.Name = "FormMenu";
-            this.Text = "Form1";
+            this.Text = "Меню";
             this.Load += new System.EventHandler(this.FormMenu_Load);
             this.ResumeLayout(false);
 

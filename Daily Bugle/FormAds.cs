@@ -38,9 +38,9 @@ namespace Daily_Bugle
         void ShowO()
         {
             comboBoxOrgId.Items.Clear();
-            foreach(AdsSet adsSet in Program.dailyDB.AdsSet)
+            foreach(OrgSet adsSet in Program.dailyDB.OrgSet)
             {
-                string[] item = {adsSet.ID.ToString() + ". ", "Наименование: " + adsSet.OrgSet.Name };
+                string[] item = {adsSet.ID.ToString() + ". ", "Наименование: " + adsSet.Name.ToString() };
                 comboBoxOrgId.Items.Add(string.Join(" ", item));
             }
         }
@@ -48,9 +48,9 @@ namespace Daily_Bugle
         void ShowG()
         {
             comboBoxGazId.Items.Clear();
-            foreach (AdsSet adsSet in Program.dailyDB.AdsSet)
+            foreach (GazSet adsSet in Program.dailyDB.GazSet)
             {
-                string[] item = {adsSet.ID.ToString() + ". ", "Наименование: " + adsSet.GazSet.Name };
+                string[] item = {adsSet.ID.ToString() + ". ", "Наименование: " + adsSet.Name.ToString() };
                 comboBoxGazId.Items.Add(string.Join(" ", item));
             }
         }

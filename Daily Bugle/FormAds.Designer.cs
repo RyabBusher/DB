@@ -201,7 +201,7 @@
             this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.listViewAds);
             this.Name = "FormAds";
-            this.Text = "FormAds";
+            this.Text = "Реклама";
             this.ResumeLayout(false);
             this.PerformLayout();
 

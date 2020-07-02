@@ -172,7 +172,7 @@
             this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.listViewGaz);
             this.Name = "FormGaz";
-            this.Text = "FormGaz";
+            this.Text = "Газеты";
             this.ResumeLayout(false);
             this.PerformLayout();
 
