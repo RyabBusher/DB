@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище dailyModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AdsSet">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdOrg" Type="int" Nullable="false" />
+          <Property Name="IdGaz" Type="int" Nullable="false" />
+          <Property Name="Num" Type="nvarchar(max)" />
+          <Property Name="Obem" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="GazSet">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Phone" Type="nvarchar(max)" />
+          <Property Name="Price" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="OrgSet">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Adress" Type="nvarchar(max)" />
+          <Property Name="Phone" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK_AdsSet_GazSet">
+          <End Role="GazSet" Type="Self.GazSet" Multiplicity="1" />
+          <End Role="AdsSet" Type="Self.AdsSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GazSet">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AdsSet">
+              <PropertyRef Name="IdGaz" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdsSet_OrgSet">
+          <End Role="OrgSet" Type="Self.OrgSet" Multiplicity="1" />
+          <End Role="AdsSet" Type="Self.AdsSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrgSet">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AdsSet">
+              <PropertyRef Name="IdOrg" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище dailyModelContainer">
+          <EntitySet Name="AdsSet" EntityType="Self.AdsSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GazSet" EntityType="Self.GazSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrgSet" EntityType="Self.OrgSet" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AdsSet_GazSet" Association="Self.FK_AdsSet_GazSet">
+            <End Role="GazSet" EntitySet="GazSet" />
+            <End Role="AdsSet" EntitySet="AdsSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdsSet_OrgSet" Association="Self.FK_AdsSet_OrgSet">
+            <End Role="OrgSet" EntitySet="OrgSet" />
+            <End Role="AdsSet" EntitySet="AdsSet" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dailyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AdsSet">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdOrg" Type="Int32" Nullable="false" />
+          <Property Name="IdGaz" Type="Int32" Nullable="false" />
+          <Property Name="Num" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Obem" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="GazSet" Relationship="Self.FK_AdsSet_GazSet" FromRole="AdsSet" ToRole="GazSet" />
+          <NavigationProperty Name="OrgSet" Relationship="Self.FK_AdsSet_OrgSet" FromRole="AdsSet" ToRole="OrgSet" />
+        </EntityType>
+        <EntityType Name="GazSet">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AdsSet" Relationship="Self.FK_AdsSet_GazSet" FromRole="GazSet" ToRole="AdsSet" />
+        </EntityType>
+        <EntityType Name="OrgSet">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Adress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AdsSet" Relationship="Self.FK_AdsSet_OrgSet" FromRole="OrgSet" ToRole="AdsSet" />
+        </EntityType>
+        <Association Name="FK_AdsSet_GazSet">
+          <End Role="GazSet" Type="Self.GazSet" Multiplicity="1" />
+          <End Role="AdsSet" Type="Self.AdsSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GazSet">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AdsSet">
+              <PropertyRef Name="IdGaz" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdsSet_OrgSet">
+          <End Role="OrgSet" Type="Self.OrgSet" Multiplicity="1" />
+          <End Role="AdsSet" Type="Self.AdsSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrgSet">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AdsSet">
+              <PropertyRef Name="IdOrg" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dailyEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AdsSet" EntityType="Self.AdsSet" />
+          <EntitySet Name="GazSet" EntityType="Self.GazSet" />
+          <EntitySet Name="OrgSet" EntityType="Self.OrgSet" />
+          <AssociationSet Name="FK_AdsSet_GazSet" Association="Self.FK_AdsSet_GazSet">
+            <End Role="GazSet" EntitySet="GazSet" />
+            <End Role="AdsSet" EntitySet="AdsSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdsSet_OrgSet" Association="Self.FK_AdsSet_OrgSet">
+            <End Role="OrgSet" EntitySet="OrgSet" />
+            <End Role="AdsSet" EntitySet="AdsSet" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище dailyModelContainer" CdmEntityContainer="dailyEntities1">
+          <EntitySetMapping Name="AdsSet">
+            <EntityTypeMapping TypeName="dailyModel.AdsSet">
+              <MappingFragment StoreEntitySet="AdsSet">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IdOrg" ColumnName="IdOrg" />
+                <ScalarProperty Name="IdGaz" ColumnName="IdGaz" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Obem" ColumnName="Obem" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GazSet">
+            <EntityTypeMapping TypeName="dailyModel.GazSet">
+              <MappingFragment StoreEntitySet="GazSet">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrgSet">
+            <EntityTypeMapping TypeName="dailyModel.OrgSet">
+              <MappingFragment StoreEntitySet="OrgSet">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
